@@ -2,37 +2,61 @@
 <html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>Dark Web Preverjanje</title>
+    <title>Dark Web Credential Checker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
-<body>
+<body class="light-mode" onload="runFadeOnce()">
     <div class="container">
+        <div class="top-bar">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+            <div class="top-actions">
+                <button onclick="toggleTheme()" class="theme-toggle">🌙 / ☀️</button>
+                <button onclick="clearSession()" class="clear-session">🗑️ Počisti sejo</button>
+            </div>
+        </div>
+
         <h1>🔍 Dark Web Credential Checker</h1>
-        <form method="POST">
+        <p class="description">
+            Ta aplikacija omogoča preverjanje, ali je bil vaš e-poštni naslov najden v podatkovnih uhajanjih na temnem spletu, z uporabo LeakCheck.io API.
+        </p>
+
+        <form method="POST" onsubmit="showSpinner()" class="form-inline" id="checkForm">
             <label for="email">Vnesite svoj e-poštni naslov:</label>
-            <input type="email" name="email" required>
-            <button type="submit">Preveri zdaj</button>
+            <input type="email" name="email" id="email" required>
+            <button type="submit">Preveri puščanje</button>
         </form>
 
-        {% if error %}
-            <p class="error">{{ error }}</p>
-        {% endif %}
+        <div id="spinner" class="spinner hidden"></div>
 
-        {% if results is not none %}
-            {% if results %}
-                <h2>⚠️ Vaš e-naslov je bil najden v naslednjih podatkovnih uhajanjih:</h2>
-                <ul>
-                    {% for breach in results %}
-                        <li>
-                            <strong>{{ breach['Name'] }}</strong> ({{ breach['BreachDate'] }})<br>
-                            {{ breach['Description'] }}
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>✅ Vaš e-naslov ni bil najden v nobenem znanem podatkovnem uhajanju.</p>
+        <div id="resultsContainer">
+            {% if error %}
+                <p class="error">{{ error }}</p>
             {% endif %}
-        {% endif %}
+
+            {% if results is not none %}
+                {% if results %}
+                    <h2>⚠️ Najdeni viri uhajanj:</h2>
+                    <ul>
+                        {% for source in results %}
+                            <li class="breach-box">
+                                {{ source }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <button onclick="exportPDF()" class="export-btn">📄 Izvozi v PDF</button>
+                {% else %}
+                    <p>✅ Vaš e-naslov ni bil najden v nobenem znanem uhajanju.</p>
+                {% endif %}
+            {% endif %}
+        </div>
     </div>
+
+    <footer>
+        <p>© 2025 Dark Web Credential Checker | Izdelal: <a href="https://davidvolk.si" target="_blank" style="color: inherit; text-decoration: underline;">DavidVolk.si</a></p>
+    </footer>
+
 </body>
 </html>
