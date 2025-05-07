@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: darkweb-checker
+    runtime: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: API_KEY
+        value: f10d216b8692934ee362c49a7ca091024ebd5128
