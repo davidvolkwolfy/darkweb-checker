@@ -29,31 +29,6 @@ pip install flask requests
 
 ---
 
-## 🚀 Zagon lokalno
-
-1. Kloniraj repozitorij:
-```bash
-git clone https://github.com/tvojeuporabniskoime/darkweb-credential-checker.git
-cd darkweb-credential-checker
-```
-
-2. V datoteki `app.py` dodaj svoj API ključ od LeakCheck.io:
-```python
-API_KEY = "tvoj_api_ključ_tukaj"
-```
-
-3. Zaženi aplikacijo:
-```bash
-python app.py
-```
-
-4. Odpri v brskalniku:
-```
-http://127.0.0.1:5000/
-```
-
----
-
 ## 🖼️ Predogled
 ![Posnetek zaslona](static/darkweb.png)
 
