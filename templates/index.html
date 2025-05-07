@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Web Preverjanje</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Dark Web Credential Checker</h1>
+        <form method="POST">
+            <label for="email">Vnesite svoj e-poštni naslov:</label>
+            <input type="email" name="email" required>
+            <button type="submit">Preveri zdaj</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if results is not none %}
+            {% if results %}
+                <h2>⚠️ Vaš e-naslov je bil najden v naslednjih podatkovnih uhajanjih:</h2>
+                <ul>
+                    {% for breach in results %}
+                        <li>
+                            <strong>{{ breach['Name'] }}</strong> ({{ breach['BreachDate'] }})<br>
+                            {{ breach['Description'] }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>✅ Vaš e-naslov ni bil najden v nobenem znanem podatkovnem uhajanju.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
