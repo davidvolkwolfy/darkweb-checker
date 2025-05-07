@@ -4,6 +4,11 @@ Preprosta spletna aplikacija na osnovi Flask, ki preveri, ali je vaš e-poštni 
 
 ---
 
+## 🖼️ Predogled
+![Posnetek zaslona](static/darkweb.png)
+
+---
+
 ## 🌐 Funkcionalnosti
 
 - Preklop med svetlo in temno temo
@@ -24,13 +29,8 @@ Preprosta spletna aplikacija na osnovi Flask, ki preveri, ali je vaš e-poštni 
 
 Namestitev odvisnosti:
 ```bash
-pip install flask requests
+pip install -r requirements.txt
 ```
-
----
-
-## 🖼️ Predogled
-![Posnetek zaslona](static/darkweb.png)
 
 ---
 
