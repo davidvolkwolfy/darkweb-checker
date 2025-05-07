@@ -68,8 +68,8 @@ form.form-inline {
 
 input[type="email"] {
     padding: 0.5rem;
-    width: 100%;
-    max-width: 600px;
+    width: 160%;
+ 
     border-radius: 7px;
     border: 2px solid #ccc;
     background-color: #e0e0e0;
