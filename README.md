@@ -5,7 +5,7 @@ Preprosta spletna aplikacija na osnovi Flask, ki preveri, ali je vaš e-poštni 
 ---
 
 ## 🖼️ Predogled
-![Posnetek zaslona](static/dark web credential checker.jpg)
+![Posnetek zaslona](static/darkwebchecker.png)
 
 ---
 
