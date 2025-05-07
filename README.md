@@ -55,9 +55,7 @@ http://127.0.0.1:5000/
 ---
 
 ## 🖼️ Predogled
-![Posnetek zaslona](static/logo.png)
-
----
+![Posnetek zaslona](static/github project preview2.jpg)
 
 ---
 
