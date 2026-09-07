@@ -4,6 +4,11 @@ Preprosta spletna aplikacija na osnovi Flask, ki preveri, ali je vaš e-poštni 
 
 ---
 
+## 🖼️ Predogled
+![Posnetek zaslona](static/darkwebchecker.png)
+
+---
+
 ## 🌐 Funkcionalnosti
 
 - Preklop med svetlo in temno temo
@@ -27,4 +32,7 @@ Namestitev odvisnosti:
 pip install -r requirements.txt
 ```
 
+---
 
+## 👨‍💻 Avtor
+[DavidVolk.si](https://davidvolk.si)

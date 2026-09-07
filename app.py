@@ -4,6 +4,7 @@ import os
 
 app = Flask(__name__)
 
+# Pridobivanje API ključa iz okoljskih spremenljivk
 API_KEY = os.getenv("API_KEY")
 
 @app.route('/', methods=['GET', 'POST'])
@@ -14,9 +15,7 @@ def index():
     if request.method == 'POST':
         email = request.form.get('email')
         if email:
-            headers = {
-                "Authorization": f"Bearer {API_KEY}"
-            }
+            headers = {"Authorization": f"Bearer {API_KEY}"}
             url = f"https://leakcheck.io/api/public?check={email}&type=email"
             try:
                 res = requests.get(url, headers=headers)
@@ -27,11 +26,15 @@ def index():
                     else:
                         results = []
                 else:
-                    error = f"Napaka pri iskanju: {res.status_code} - {res.text}"
+                    error = "Zahteva je potekla. Poskusite znova."
             except Exception as e:
-                error = f"Napaka: {str(e)}"
+                error = f"Sistemska napaka: {str(e)}"
 
     return render_template('index.html', results=results, error=error)
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
